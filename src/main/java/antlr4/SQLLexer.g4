@@ -1,5 +1,7 @@
 lexer grammar SQLLexer;
 
+import CommonLexer;
+
 SELECT
    : 'select' | 'SELECT'
    ;
@@ -23,11 +25,6 @@ AND
 OR
    : 'or' | '||' | 'OR'
    ;
-
-
-/*XOR
-   : 'xor'
-   ;*/
 
 
 IS
@@ -60,11 +57,6 @@ ALL
    ;
 
 
-/*ANY
-   : 'any'
-   ;*/
-
-
 TRUE
    : 'true' | 'TRUE'
    ;
@@ -73,16 +65,6 @@ TRUE
 FALSE
    : 'false' | 'FALSE'
    ;
-
-
-/*DIVIDE
-   : 'div' | '/'
-   ;*/
-
-
-/*MOD
-   : 'mod' | '%'
-   ;*/
 
 
 BETWEEN
@@ -98,16 +80,6 @@ REGEXP
 LIMIT
   : 'limit' | 'LIMIT'
   ;
-
-
-/*PLUS
-   : '+'
-   ;*/
-
-
-/*MINUS
-   : '-'
-   ;*/
 
 
 NEGATION
@@ -154,14 +126,6 @@ VERTBAR
    : '*'
    ;*/
 
-RPAREN
-   : ')'
-   ;
-
-
-LPAREN
-   : '('
-   ;
 
 
 RBRACK
@@ -224,56 +188,6 @@ SEMI
    ;
 
 
-COMMA
-   : ','
-   ;
-
-
-DOT
-   : '.'
-   ;
-
-
-/*COLLATE
-   : 'collate'
-   ;*/
-
-
-/*INNER
-   : 'inner'
-   ;
-
-
-OUTER
-   : 'outer'
-   ;
-
-
-JOIN
-   : 'join'
-   ;*/
-
-
-/*CROSS
-   : 'cross'
-   ;*/
-
-
-/*USING
-   : 'using'
-   ;*/
-
-
-/*INDEX
-   : 'index'
-   ;*/
-
-
-/*KEY
-   : 'key'
-   ;*/
-
-
 ORDER
    : 'order'
    ;
@@ -287,99 +201,3 @@ GROUP
 BY
    : 'by'
    ;
-
-
-/*FOR
-   : 'for'
-   ;*/
-
-
-/*USE
-   : 'use'
-   ;*/
-
-
-/*IGNORE
-   : 'ignore'
-   ;*/
-
-
-/*PARTITION
-   : 'partition'
-   ;*/
-
-
-/*STRAIGHT_JOIN
-   : 'straight_join'
-   ;*/
-
-
-/*NATURAL
-   : 'natural'
-   ;*/
-
-
-/*LEFT
-   : 'left'
-   ;
-
-
-RIGHT
-   : 'right'
-   ;*/
-
-
-/*OJ
-   : 'oj'
-   ;*/
-
-
-/*ON
-   : 'on'
-   ;*/
-
-
-ID
-   : ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\u4e00' .. '\u9fa5' | '-' | '0' .. '9' )+
-   ;
-
-
-INT
-   : '0' .. '9'+
-   ;
-
-
-NEWLINE
-   : '\r'? '\n' -> skip
-   ;
-
-
-WS
-   : ( ' ' | '\t' | '\n' | '\r' )+ -> skip
-   ;
-
-
-/*
-USER_VAR
-   : '@' ( USER_VAR_SUBFIX1 | USER_VAR_SUBFIX2 | USER_VAR_SUBFIX3 | USER_VAR_SUBFIX4 )
-   ;
-
-
-fragment USER_VAR_SUBFIX1
-   : ( '`' ( ~ '`' )+ '`' )
-   ;
-
-
-fragment USER_VAR_SUBFIX2
-   : ( '\'' ( ~ '\'' )+ '\'' )
-   ;
-
-
-fragment USER_VAR_SUBFIX3
-   : ( '\"' ( ~ '\"' )+ '\"' )
-   ;
-
-
-fragment USER_VAR_SUBFIX4
-   : ( 'A' .. 'Z' | 'a' .. 'z' | '_' | '$' | '0' .. '9' | DOT )+
-   ;*/

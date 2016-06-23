@@ -1,17 +1,13 @@
-// Generated from F:/GitHub/testeverything/antlr/src/main/java/esql\SQLParser.g4 by ANTLR 4.5.3
+// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/SQLParser.g4 by ANTLR 4.5.3
 package antlr4;
-
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class SQLParser extends Parser {
@@ -23,9 +19,10 @@ public class SQLParser extends Parser {
 	public static final int
 		SELECT=1, FROM=2, WHERE=3, AND=4, OR=5, IS=6, NULL=7, LIKE=8, IN=9, EXISTS=10, 
 		ALL=11, TRUE=12, FALSE=13, BETWEEN=14, REGEXP=15, LIMIT=16, NEGATION=17, 
-		VERTBAR=18, RPAREN=19, LPAREN=20, RBRACK=21, LBRACK=22, COLON=23, ALL_FIELDS=24, 
-		EQ=25, LTH=26, GTH=27, NOT_EQ=28, NOT=29, LET=30, GET=31, SEMI=32, COMMA=33, 
-		DOT=34, ORDER=35, GROUP=36, BY=37, ID=38, INT=39, NEWLINE=40, WS=41;
+		VERTBAR=18, RBRACK=19, LBRACK=20, COLON=21, ALL_FIELDS=22, EQ=23, LTH=24, 
+		GTH=25, NOT_EQ=26, NOT=27, LET=28, GET=29, SEMI=30, ORDER=31, GROUP=32, 
+		BY=33, ID=34, INT=35, NEWLINE=36, WS=37, RPAREN=38, LPAREN=39, INDEX=40, 
+		KEY=41, COMMA=42, DOT=43, PARTITION=44;
 	public static final int
 		RULE_stat = 0, RULE_select_clause = 1, RULE_table_name = 2, RULE_table_type = 3, 
 		RULE_limit_case = 4, RULE_limitexpre = 5, RULE_limitNum = 6, RULE_column_name = 7, 
@@ -42,16 +39,17 @@ public class SQLParser extends Parser {
 
 	private static final String[] _LITERAL_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, "'~'", "'|'", "')'", "'('", "']'", "'['", 
-		"':'", "'*'", "'='", "'<'", "'>'", "'!='", "'not'", "'<='", "'>='", "';'", 
-		"','", "'.'", "'order'", "'group'", "'by'"
+		null, null, null, null, null, "'~'", "'|'", "']'", "'['", "':'", "'*'", 
+		"'='", "'<'", "'>'", "'!='", "'not'", "'<='", "'>='", "';'", "'order'", 
+		"'group'", "'by'", null, null, null, null, "')'", "'('", "'index'", "'key'", 
+		"','", "'.'", "'partition'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "SELECT", "FROM", "WHERE", "AND", "OR", "IS", "NULL", "LIKE", "IN", 
 		"EXISTS", "ALL", "TRUE", "FALSE", "BETWEEN", "REGEXP", "LIMIT", "NEGATION", 
-		"VERTBAR", "RPAREN", "LPAREN", "RBRACK", "LBRACK", "COLON", "ALL_FIELDS", 
-		"EQ", "LTH", "GTH", "NOT_EQ", "NOT", "LET", "GET", "SEMI", "COMMA", "DOT", 
-		"ORDER", "GROUP", "BY", "ID", "INT", "NEWLINE", "WS"
+		"VERTBAR", "RBRACK", "LBRACK", "COLON", "ALL_FIELDS", "EQ", "LTH", "GTH", 
+		"NOT_EQ", "NOT", "LET", "GET", "SEMI", "ORDER", "GROUP", "BY", "ID", "INT", 
+		"NEWLINE", "WS", "RPAREN", "LPAREN", "INDEX", "KEY", "COMMA", "DOT", "PARTITION"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -109,8 +107,7 @@ public class SQLParser extends Parser {
 		public StatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_stat; }
+		@Override public int getRuleIndex() { return RULE_stat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterStat(this);
@@ -165,8 +162,7 @@ public class SQLParser extends Parser {
 		public Select_clauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_select_clause; }
+		@Override public int getRuleIndex() { return RULE_select_clause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterSelect_clause(this);
@@ -233,8 +229,7 @@ public class SQLParser extends Parser {
 		public Table_nameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_table_name; }
+		@Override public int getRuleIndex() { return RULE_table_name; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterTable_name(this);
@@ -276,8 +271,7 @@ public class SQLParser extends Parser {
 		public Table_typeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_table_type; }
+		@Override public int getRuleIndex() { return RULE_table_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterTable_type(this);
@@ -322,8 +316,7 @@ public class SQLParser extends Parser {
 		public Limit_caseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_limit_case; }
+		@Override public int getRuleIndex() { return RULE_limit_case; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterLimit_case(this);
@@ -373,8 +366,7 @@ public class SQLParser extends Parser {
 		public LimitexpreContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_limitexpre; }
+		@Override public int getRuleIndex() { return RULE_limitexpre; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterLimitexpre(this);
@@ -420,8 +412,7 @@ public class SQLParser extends Parser {
 		public LimitNumContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_limitNum; }
+		@Override public int getRuleIndex() { return RULE_limitNum; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterLimitNum(this);
@@ -463,8 +454,7 @@ public class SQLParser extends Parser {
 		public Column_nameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_column_name; }
+		@Override public int getRuleIndex() { return RULE_column_name; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterColumn_name(this);
@@ -516,8 +506,7 @@ public class SQLParser extends Parser {
 		public Column_list_clauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_column_list_clause; }
+		@Override public int getRuleIndex() { return RULE_column_list_clause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterColumn_list_clause(this);
@@ -593,8 +582,7 @@ public class SQLParser extends Parser {
 		public Where_clauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_where_clause; }
+		@Override public int getRuleIndex() { return RULE_where_clause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterWhere_clause(this);
@@ -637,8 +625,7 @@ public class SQLParser extends Parser {
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_expression; }
+		@Override public int getRuleIndex() { return RULE_expression; }
 	 
 		public ExpressionContext() { }
 		public void copyFrom(ExpressionContext ctx) {
@@ -780,7 +767,7 @@ public class SQLParser extends Parser {
 			setState(99);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -838,8 +825,7 @@ public class SQLParser extends Parser {
 		public ElementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_element; }
+		@Override public int getRuleIndex() { return RULE_element; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterElement(this);
@@ -889,8 +875,7 @@ public class SQLParser extends Parser {
 		public Right_elementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_right_element; }
+		@Override public int getRuleIndex() { return RULE_right_element; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterRight_element(this);
@@ -934,8 +919,7 @@ public class SQLParser extends Parser {
 		public Left_elementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_left_element; }
+		@Override public int getRuleIndex() { return RULE_left_element; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterLeft_element(this);
@@ -979,8 +963,7 @@ public class SQLParser extends Parser {
 		public Target_elementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_target_element; }
+		@Override public int getRuleIndex() { return RULE_target_element; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterTarget_element(this);
@@ -1028,8 +1011,7 @@ public class SQLParser extends Parser {
 		public Relational_opContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_relational_op; }
+		@Override public int getRuleIndex() { return RULE_relational_op; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterRelational_op(this);
@@ -1079,8 +1061,7 @@ public class SQLParser extends Parser {
 		public Expr_opContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_expr_op; }
+		@Override public int getRuleIndex() { return RULE_expr_op; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterExpr_op(this);
@@ -1128,8 +1109,7 @@ public class SQLParser extends Parser {
 		public Between_opContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_between_op; }
+		@Override public int getRuleIndex() { return RULE_between_op; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterBetween_op(this);
@@ -1172,8 +1152,7 @@ public class SQLParser extends Parser {
 		public Is_or_is_notContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_is_or_is_not; }
+		@Override public int getRuleIndex() { return RULE_is_or_is_not; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterIs_or_is_not(this);
@@ -1229,8 +1208,7 @@ public class SQLParser extends Parser {
 		public Simple_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_simple_expression; }
+		@Override public int getRuleIndex() { return RULE_simple_expression; }
 	 
 		public Simple_expressionContext() { }
 		public void copyFrom(Simple_expressionContext ctx) {
@@ -1405,8 +1383,7 @@ public class SQLParser extends Parser {
 		public Table_referencesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override
-		public int getRuleIndex() { return RULE_table_references; }
+		@Override public int getRuleIndex() { return RULE_table_references; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if ( listener instanceof SQLParserListener ) ((SQLParserListener)listener).enterTable_references(this);
@@ -1488,7 +1465,7 @@ public class SQLParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3+\u009b\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3.\u009b\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\3\3\3\3\3\3\3\3\3\5"+
@@ -1500,34 +1477,34 @@ public class SQLParser extends Parser {
 		"\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\5\25\u008c\n\25"+
 		"\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\7\26\u0096\n\26\f\26\16\26\u0099"+
 		"\13\26\3\26\2\3\26\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*\2"+
-		"\5\3\2()\5\2\n\n\33\36 !\4\2\6\7\37\37\u0090\2,\3\2\2\2\4.\3\2\2\2\68"+
-		"\3\2\2\2\b:\3\2\2\2\n<\3\2\2\2\f?\3\2\2\2\16C\3\2\2\2\20E\3\2\2\2\22P"+
-		"\3\2\2\2\24R\3\2\2\2\26[\3\2\2\2\30h\3\2\2\2\32j\3\2\2\2\34l\3\2\2\2\36"+
-		"n\3\2\2\2 p\3\2\2\2\"r\3\2\2\2$t\3\2\2\2&y\3\2\2\2(\u008b\3\2\2\2*\u008d"+
-		"\3\2\2\2,-\5\4\3\2-\3\3\2\2\2./\7\3\2\2/\60\5\22\n\2\60\61\7\4\2\2\61"+
-		"\63\5*\26\2\62\64\5\24\13\2\63\62\3\2\2\2\63\64\3\2\2\2\64\66\3\2\2\2"+
-		"\65\67\5\n\6\2\66\65\3\2\2\2\66\67\3\2\2\2\67\5\3\2\2\289\7(\2\29\7\3"+
-		"\2\2\2:;\7(\2\2;\t\3\2\2\2<=\7\22\2\2=>\5\f\7\2>\13\3\2\2\2?@\5\16\b\2"+
-		"@A\7#\2\2AB\5\16\b\2B\r\3\2\2\2CD\7)\2\2D\17\3\2\2\2EF\7(\2\2F\21\3\2"+
-		"\2\2GQ\7\32\2\2HM\5\20\t\2IJ\7#\2\2JL\5\20\t\2KI\3\2\2\2LO\3\2\2\2MK\3"+
-		"\2\2\2MN\3\2\2\2NQ\3\2\2\2OM\3\2\2\2PG\3\2\2\2PH\3\2\2\2Q\23\3\2\2\2R"+
-		"S\7\5\2\2ST\5\26\f\2T\25\3\2\2\2UV\b\f\1\2VW\7\26\2\2WX\5\26\f\2XY\7\25"+
-		"\2\2Y\\\3\2\2\2Z\\\5(\25\2[U\3\2\2\2[Z\3\2\2\2\\e\3\2\2\2]^\f\5\2\2^_"+
-		"\7\6\2\2_d\5\26\f\6`a\f\4\2\2ab\7\7\2\2bd\5\26\f\5c]\3\2\2\2c`\3\2\2\2"+
-		"dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2f\27\3\2\2\2ge\3\2\2\2hi\t\2\2\2i\31\3\2"+
-		"\2\2jk\5\30\r\2k\33\3\2\2\2lm\5\30\r\2m\35\3\2\2\2no\5\30\r\2o\37\3\2"+
-		"\2\2pq\t\3\2\2q!\3\2\2\2rs\t\4\2\2s#\3\2\2\2tu\7\20\2\2u%\3\2\2\2vz\7"+
-		"\b\2\2wx\7\b\2\2xz\7\37\2\2yv\3\2\2\2yw\3\2\2\2z\'\3\2\2\2{|\5\34\17\2"+
-		"|}\5 \21\2}~\5\32\16\2~\u008c\3\2\2\2\177\u0080\5\36\20\2\u0080\u0081"+
-		"\5$\23\2\u0081\u0082\7\26\2\2\u0082\u0083\5\34\17\2\u0083\u0084\7#\2\2"+
-		"\u0084\u0085\5\34\17\2\u0085\u0086\7\25\2\2\u0086\u008c\3\2\2\2\u0087"+
-		"\u0088\5\36\20\2\u0088\u0089\5&\24\2\u0089\u008a\7\t\2\2\u008a\u008c\3"+
-		"\2\2\2\u008b{\3\2\2\2\u008b\177\3\2\2\2\u008b\u0087\3\2\2\2\u008c)\3\2"+
-		"\2\2\u008d\u008e\5\6\4\2\u008e\u008f\7$\2\2\u008f\u0097\5\b\5\2\u0090"+
-		"\u0091\7#\2\2\u0091\u0092\5\6\4\2\u0092\u0093\7$\2\2\u0093\u0094\5\b\5"+
-		"\2\u0094\u0096\3\2\2\2\u0095\u0090\3\2\2\2\u0096\u0099\3\2\2\2\u0097\u0095"+
-		"\3\2\2\2\u0097\u0098\3\2\2\2\u0098+\3\2\2\2\u0099\u0097\3\2\2\2\f\63\66"+
-		"MP[cey\u008b\u0097";
+		"\5\3\2$%\5\2\n\n\31\34\36\37\4\2\6\7\35\35\u0090\2,\3\2\2\2\4.\3\2\2\2"+
+		"\68\3\2\2\2\b:\3\2\2\2\n<\3\2\2\2\f?\3\2\2\2\16C\3\2\2\2\20E\3\2\2\2\22"+
+		"P\3\2\2\2\24R\3\2\2\2\26[\3\2\2\2\30h\3\2\2\2\32j\3\2\2\2\34l\3\2\2\2"+
+		"\36n\3\2\2\2 p\3\2\2\2\"r\3\2\2\2$t\3\2\2\2&y\3\2\2\2(\u008b\3\2\2\2*"+
+		"\u008d\3\2\2\2,-\5\4\3\2-\3\3\2\2\2./\7\3\2\2/\60\5\22\n\2\60\61\7\4\2"+
+		"\2\61\63\5*\26\2\62\64\5\24\13\2\63\62\3\2\2\2\63\64\3\2\2\2\64\66\3\2"+
+		"\2\2\65\67\5\n\6\2\66\65\3\2\2\2\66\67\3\2\2\2\67\5\3\2\2\289\7$\2\29"+
+		"\7\3\2\2\2:;\7$\2\2;\t\3\2\2\2<=\7\22\2\2=>\5\f\7\2>\13\3\2\2\2?@\5\16"+
+		"\b\2@A\7,\2\2AB\5\16\b\2B\r\3\2\2\2CD\7%\2\2D\17\3\2\2\2EF\7$\2\2F\21"+
+		"\3\2\2\2GQ\7\30\2\2HM\5\20\t\2IJ\7,\2\2JL\5\20\t\2KI\3\2\2\2LO\3\2\2\2"+
+		"MK\3\2\2\2MN\3\2\2\2NQ\3\2\2\2OM\3\2\2\2PG\3\2\2\2PH\3\2\2\2Q\23\3\2\2"+
+		"\2RS\7\5\2\2ST\5\26\f\2T\25\3\2\2\2UV\b\f\1\2VW\7)\2\2WX\5\26\f\2XY\7"+
+		"(\2\2Y\\\3\2\2\2Z\\\5(\25\2[U\3\2\2\2[Z\3\2\2\2\\e\3\2\2\2]^\f\5\2\2^"+
+		"_\7\6\2\2_d\5\26\f\6`a\f\4\2\2ab\7\7\2\2bd\5\26\f\5c]\3\2\2\2c`\3\2\2"+
+		"\2dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2f\27\3\2\2\2ge\3\2\2\2hi\t\2\2\2i\31\3"+
+		"\2\2\2jk\5\30\r\2k\33\3\2\2\2lm\5\30\r\2m\35\3\2\2\2no\5\30\r\2o\37\3"+
+		"\2\2\2pq\t\3\2\2q!\3\2\2\2rs\t\4\2\2s#\3\2\2\2tu\7\20\2\2u%\3\2\2\2vz"+
+		"\7\b\2\2wx\7\b\2\2xz\7\35\2\2yv\3\2\2\2yw\3\2\2\2z\'\3\2\2\2{|\5\34\17"+
+		"\2|}\5 \21\2}~\5\32\16\2~\u008c\3\2\2\2\177\u0080\5\36\20\2\u0080\u0081"+
+		"\5$\23\2\u0081\u0082\7)\2\2\u0082\u0083\5\34\17\2\u0083\u0084\7,\2\2\u0084"+
+		"\u0085\5\34\17\2\u0085\u0086\7(\2\2\u0086\u008c\3\2\2\2\u0087\u0088\5"+
+		"\36\20\2\u0088\u0089\5&\24\2\u0089\u008a\7\t\2\2\u008a\u008c\3\2\2\2\u008b"+
+		"{\3\2\2\2\u008b\177\3\2\2\2\u008b\u0087\3\2\2\2\u008c)\3\2\2\2\u008d\u008e"+
+		"\5\6\4\2\u008e\u008f\7-\2\2\u008f\u0097\5\b\5\2\u0090\u0091\7,\2\2\u0091"+
+		"\u0092\5\6\4\2\u0092\u0093\7-\2\2\u0093\u0094\5\b\5\2\u0094\u0096\3\2"+
+		"\2\2\u0095\u0090\3\2\2\2\u0096\u0099\3\2\2\2\u0097\u0095\3\2\2\2\u0097"+
+		"\u0098\3\2\2\2\u0098+\3\2\2\2\u0099\u0097\3\2\2\2\f\63\66MP[cey\u008b"+
+		"\u0097";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

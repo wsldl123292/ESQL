@@ -11,7 +11,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 public class Esql {
     public static void main(String[] args) throws Exception {
-        ANTLRInputStream input = new ANTLRInputStream("SELECT Aa FROM dE-5.f where cD = a and (dd=c or c=t)");
+        ANTLRInputStream input = new ANTLRInputStream
+                ("SELECT Aa FROM dE-5.f where cD = a and (dd=c or c=t)");
         SQLLexer lexer = new SQLLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         SQLParser parser = new SQLParser(tokens);
