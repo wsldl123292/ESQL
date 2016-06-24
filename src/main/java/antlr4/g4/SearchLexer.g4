@@ -1,4 +1,4 @@
-lexer grammar SQLLexer;
+lexer grammar SearchLexer;
 
 import CommonLexer;
 
@@ -57,16 +57,6 @@ ALL
    ;
 
 
-TRUE
-   : 'true' | 'TRUE'
-   ;
-
-
-FALSE
-   : 'false' | 'FALSE'
-   ;
-
-
 BETWEEN
    : 'between' | 'BETWEEN'
    ;
@@ -80,62 +70,6 @@ REGEXP
 LIMIT
   : 'limit' | 'LIMIT'
   ;
-
-
-NEGATION
-   : '~'
-   ;
-
-
-VERTBAR
-   : '|'
-   ;
-
-
-/*BITAND
-   : '&'
-   ;*/
-
-
-/*POWER_OP
-   : '^'
-   ;*/
-
-
-/*BINARY
-   : 'binary'
-   ;*/
-
-
-/*SHIFT_LEFT
-   : '<<'
-   ;*/
-
-
-/*SHIFT_RIGHT
-   : '>>'
-   ;*/
-
-
-/*ESCAPE
-   : 'escape'
-   ;*/
-
-
-/*ASTERISK
-   : '*'
-   ;*/
-
-
-
-RBRACK
-   : ']'
-   ;
-
-
-LBRACK
-   : '['
-   ;
 
 
 COLON
@@ -168,11 +102,6 @@ NOT_EQ
    ;
 
 
-NOT
-   : 'not'
-   ;
-
-
 LET
    : '<='
    ;
@@ -189,15 +118,15 @@ SEMI
 
 
 ORDER
-   : 'order'
+   : 'order'|'ORDER'
    ;
 
 
 GROUP
-   : 'group'
+   : 'group'|'GROUP'
    ;
 
 
 BY
-   : 'by'
+   : 'by'|'BY'
    ;

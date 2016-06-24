@@ -53,3 +53,23 @@ DOT
 PARTITION
    : 'partition'
    ;
+
+NEGATION
+   : '~'
+   ;
+
+
+VERTBAR
+   : '|'
+   ;
+
+
+
+TRUE
+   : 'true' | 'TRUE'
+   ;
+
+
+FALSE
+   : 'false' | 'FALSE'
+   ;
