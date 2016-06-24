@@ -6,7 +6,7 @@ ID
 
 
 INT
-   : '0' .. '9'+
+   : [0-9]+
    ;
 
 
@@ -62,8 +62,6 @@ NEGATION
 VERTBAR
    : '|'
    ;
-
-
 
 TRUE
    : 'true' | 'TRUE'

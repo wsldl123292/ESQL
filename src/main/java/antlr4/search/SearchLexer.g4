@@ -31,7 +31,9 @@ IS
    : 'is' | 'IS'
    ;
 
-
+NOT
+   : 'not' | 'NOT'
+   ;
 NULL
    : 'null' | 'NULL'
    ;

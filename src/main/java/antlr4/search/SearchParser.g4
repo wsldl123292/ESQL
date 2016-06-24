@@ -7,7 +7,7 @@ stat
    ;
 
 select_clause
-   : SELECT column_list_clause FROM table_references  ( where_clause )? ( limit_case )?
+   : SELECT column_list_clause FROM table_references  where_clause? limit_case?
    ;
 
 table_name
@@ -19,16 +19,11 @@ table_type
    ;
 
 limit_case
-   : LIMIT limitexpre
+   : LIMIT limit_expr
    ;
 
-
-limitexpre
-   : limitNum COMMA limitNum
-   ;
-
-limitNum
-   : INT
+limit_expr
+   : ID COMMA ID
    ;
 
 column_name

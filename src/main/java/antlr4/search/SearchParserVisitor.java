@@ -1,4 +1,4 @@
-// Generated from F:/GitHub/ESQL/src/main/java/antlr4/g4\SearchParser.g4 by ANTLR 4.5.3
+// Generated from F:/GitHub/ESQL/src/main/java/antlr4/search\SearchParser.g4 by ANTLR 4.5.3
 package antlr4.search;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -41,17 +41,11 @@ public interface SearchParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLimit_case(SearchParser.Limit_caseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SearchParser#limitexpre}.
+	 * Visit a parse tree produced by {@link SearchParser#limit_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLimitexpre(SearchParser.LimitexpreContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SearchParser#limitNum}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLimitNum(SearchParser.LimitNumContext ctx);
+	T visitLimit_expr(SearchParser.Limit_exprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SearchParser#column_name}.
 	 * @param ctx the parse tree
