@@ -3,7 +3,7 @@ package antlr4.search;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
-import static antlr4.search.SearchParser.*;
+import static antlr4.search.WhereParser.*;
 
 /**
  * 说明: sql语句中的where条件转换为QueryBuilder,
@@ -11,7 +11,7 @@ import static antlr4.search.SearchParser.*;
  * 作者: LDL
  * 日期: 2016/6/15.
  */
-public class SearchWhereParserVisitor extends SearchParserBaseVisitor<QueryBuilder> {
+public class WhereVisitor extends WhereParserBaseVisitor<QueryBuilder> {
 
     /**
      * 遍历括号表达式

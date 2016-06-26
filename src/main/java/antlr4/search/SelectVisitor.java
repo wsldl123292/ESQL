@@ -5,14 +5,14 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
-import static antlr4.search.SearchParser.*;
+import static antlr4.search.SelectParser.*;
 
 /**
  * 说明:
  * 作者: LDL
  * 日期: 2016/6/15.
  */
-public class SearchSelectParserVisitor extends SearchParserBaseVisitor<SearchRequestBuilder> {
+public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder> {
 
     Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("192.168.99.100", 9300));;
     private SearchRequestBuilder searchRequestBuilder;
