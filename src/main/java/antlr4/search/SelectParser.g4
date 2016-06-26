@@ -1,4 +1,4 @@
-parser grammar SearchParser;
+parser grammar SelectParser;
 
 options
    { tokenVocab = SearchLexer; }

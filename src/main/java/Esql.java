@@ -1,12 +1,15 @@
 import antlr4.search.SearchLexer;
-import antlr4.search.SearchParser;
-import antlr4.search.SearchSelectParserVisitor;
-import antlr4.search.SearchWhereParserVisitor;
+import antlr4.search.SelectParser;
+import antlr4.search.WhereParser;
+import com.alibaba.druid.sql.ast.statement.SQLSelect;
+import com.alibaba.druid.sql.ast.statement.SQLSelectQuery;
+import com.alibaba.druid.sql.ast.statement.SQLSelectQueryBlock;
+import com.alibaba.druid.sql.ast.statement.SQLSelectStatement;
+import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
+import com.sun.org.apache.xml.internal.utils.StringBufferPool;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 
 /**
  * 说明:
@@ -15,20 +18,29 @@ import org.elasticsearch.index.query.QueryBuilder;
  */
 public class Esql {
     public static void main(String[] args) throws Exception {
-        ANTLRInputStream input = new ANTLRInputStream
-                ("SELECT a FROM dE-5.f where a=b and d=c ");
+
+        String sql = "select a from b.e where  a=  b   and d=c ".toLowerCase();
+
+        String whereSql = getWhereSql(sql).toLowerCase();
+        String sqlWithOutWhere = deleteWhereSql(sql,whereSql);
+
+        System.out.println(whereSql);
+        System.out.println(sqlWithOutWhere);
+        /*ANTLRInputStream input = new ANTLRInputStream
+                ();
         SearchLexer lexer = new SearchLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SearchParser parser = new SearchParser(tokens);
-        ParseTree tree = parser.stat();
-        ParseTree d = parser.where_clause();
-        System.out.println(d.toStringTree(parser));
-        System.out.println(tree.getText());
 
-        /*SearchSelectParserVisitor searchSelectParserVisitor = new SearchSelectParserVisitor();
+
+
+        WhereParser whereParser = new WhereParser(tokens);
+        ParseTree wtree = whereParser.stat();
+        System.out.println(wtree.getText());*/
+
+        /*SelectVisitor searchSelectParserVisitor = new SelectVisitor();
         SearchRequestBuilder searchRequestBuilder = searchSelectParserVisitor.visit(tree);
         System.out.println(searchRequestBuilder);*/
-        /*SearchWhereParserVisitor whereParserVisitor = new SearchWhereParserVisitor();
+        /*WhereVisitor whereParserVisitor = new WhereVisitor();
         QueryBuilder queryBuilder = whereParserVisitor.visit(tree);
 
         searchRequestBuilder.setQuery(queryBuilder);
@@ -38,5 +50,26 @@ public class Esql {
 
         //System.out.println(tree.toStringTree(parser)); // print tree as text
 
+    }
+
+
+    public static String getWhereSql(String sql){
+        //使用mysql解析
+        MySqlStatementParser sqlStatementParser = new MySqlStatementParser(sql) ;
+        //解析select查询
+        SQLSelectStatement sqlStatement = (SQLSelectStatement) sqlStatementParser.parseSelect();
+        SQLSelect sqlSelect = sqlStatement.getSelect() ;
+        //获取sql查询块
+        SQLSelectQueryBlock sqlSelectQuery = (SQLSelectQueryBlock)sqlSelect.getQuery() ;
+        return sqlSelectQuery.getWhere().toString();
+    }
+
+
+    public static String deleteWhereSql(String sql,String whereSql){
+        String regex = "where\\S+";
+
+        sql = sql.replaceAll(regex,"");
+
+        return sql;
     }
 }
