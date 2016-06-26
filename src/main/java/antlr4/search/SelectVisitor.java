@@ -34,5 +34,10 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
         return searchRequestBuilder.setFrom(begin).setSize(size);
     }
 
+    @Override
+    public SearchRequestBuilder visitWhere_clause(Where_clauseContext ctx){
+        return searchRequestBuilder;
+    }
+
 
 }

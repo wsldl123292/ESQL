@@ -1,6 +1,4 @@
-import antlr4.search.SearchLexer;
-import antlr4.search.SelectParser;
-import antlr4.search.WhereParser;
+import antlr4.search.*;
 import com.alibaba.druid.sql.ast.statement.SQLSelect;
 import com.alibaba.druid.sql.ast.statement.SQLSelectQuery;
 import com.alibaba.druid.sql.ast.statement.SQLSelectQueryBlock;
@@ -10,6 +8,8 @@ import com.sun.org.apache.xml.internal.utils.StringBufferPool;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 
 /**
  * 说明:
@@ -22,29 +22,32 @@ public class Esql {
         String sql = "select a from b.e where  a=  b   and d=c ".toLowerCase();
 
         String whereSql = getWhereSql(sql).toLowerCase();
-        String sqlWithOutWhere = deleteWhereSql(sql,whereSql);
-
-        System.out.println(whereSql);
-        System.out.println(sqlWithOutWhere);
-        /*ANTLRInputStream input = new ANTLRInputStream
-                ();
+//        String sqlWithOutWhere = deleteWhereSql(sql,whereSql);
+//
+//        System.out.println(whereSql);
+//        System.out.println(sqlWithOutWhere);
+        ANTLRInputStream input = new ANTLRInputStream
+                ("where "+whereSql);
         SearchLexer lexer = new SearchLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-
+//        SelectParser parser = new SelectParser(tokens);
+//        ParseTree tree = parser.stat();
+        //System.out.println(tree.getText());
 
         WhereParser whereParser = new WhereParser(tokens);
         ParseTree wtree = whereParser.stat();
-        System.out.println(wtree.getText());*/
+        System.out.println(wtree.getText());
 
-        /*SelectVisitor searchSelectParserVisitor = new SelectVisitor();
-        SearchRequestBuilder searchRequestBuilder = searchSelectParserVisitor.visit(tree);
-        System.out.println(searchRequestBuilder);*/
-        /*WhereVisitor whereParserVisitor = new WhereVisitor();
-        QueryBuilder queryBuilder = whereParserVisitor.visit(tree);
+//        SelectVisitor searchSelectParserVisitor = new SelectVisitor();
+//        SearchRequestBuilder searchRequestBuilder = searchSelectParserVisitor.visit(tree);
+//        System.out.println(searchRequestBuilder);
+        WhereVisitor whereParserVisitor = new WhereVisitor();
+        QueryBuilder queryBuilder = whereParserVisitor.visit(wtree);
 
-        searchRequestBuilder.setQuery(queryBuilder);
-        System.out.println(queryBuilder);*/
+        //searchRequestBuilder.setQuery(queryBuilder);
+        System.out.println(queryBuilder);
+
 
 
 
