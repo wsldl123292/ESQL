@@ -13,11 +13,11 @@ select_clause
    ;
 
 table_name
-   : ID
+   : (ID)*(INT)*
    ;
 
 table_type
-   : ID
+   : (ID)*(INT)*
    ;
 
 limit_case
@@ -25,11 +25,11 @@ limit_case
    ;
 
 limit_expr
-   : ID COMMA ID
+   : INT COMMA INT
    ;
 
 column_name
-   : ID
+   : (ID)*(INT)*
    ;
 
 column_list_clause

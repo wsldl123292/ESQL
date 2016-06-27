@@ -10,6 +10,12 @@ import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
 import com.alibaba.druid.sql.visitor.SQLASTOutputVisitor;
 import com.alibaba.druid.util.JdbcUtils;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
 import java.util.List;
 
@@ -21,17 +27,16 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-        String sql = " select eventId,eventKey,eventName,flag from event.f,ee.wa where a";
-        //使用mysql解析
-        MySqlStatementParser sqlStatementParser = new MySqlStatementParser(sql) ;
-        //解析select查询
-        SQLSelectStatement sqlStatement = (SQLSelectStatement) sqlStatementParser.parseSelect();
-        SQLSelect sqlSelect = sqlStatement.getSelect() ;
-        //获取sql查询块
-        SQLSelectQueryBlock sqlSelectQuery = (SQLSelectQueryBlock)sqlSelect.getQuery() ;
-        sqlSelectQuery.getWhere();
-        System.out.println(sqlSelectQuery.getWhere().toString());
+        final Settings settings = ImmutableSettings.settingsBuilder()
+                .put("client.transport.sniff", true).put("cluster.name", "es").build();
+        Client client = new TransportClient(settings).addTransportAddress(new InetSocketTransportAddress("192.168.1.212", 9300));;
 
+        SearchRequestBuilder searchRequestBuilder = client.prepareSearch("ttt3").setTypes("ttt3")
+                .setFetchSource("name",null);
+
+        System.out.println(searchRequestBuilder);
+
+        System.out.println(searchRequestBuilder.execute().actionGet());
     }
 
 }

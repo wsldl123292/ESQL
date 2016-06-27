@@ -3,6 +3,8 @@ package antlr4.search;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
 import static antlr4.search.SelectParser.*;
@@ -14,17 +16,15 @@ import static antlr4.search.SelectParser.*;
  */
 public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder> {
 
-    Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("192.168.1.212", 9300));;
     private SearchRequestBuilder searchRequestBuilder;
-    @Override
-    public SearchRequestBuilder visitTable_name(Table_nameContext ctx) {
-        searchRequestBuilder = client.prepareSearch(ctx.getText());
-        return searchRequestBuilder;
+
+    public SelectVisitor(SearchRequestBuilder searchRequestBuilder){
+        this.searchRequestBuilder = searchRequestBuilder;
     }
 
     @Override
     public SearchRequestBuilder visitTable_type(Table_typeContext ctx) {
-        return searchRequestBuilder.setTypes(ctx.getText());
+        return searchRequestBuilder;
     }
 
     @Override
@@ -35,9 +35,13 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
     }
 
     @Override
-    public SearchRequestBuilder visitWhere_clause(Where_clauseContext ctx){
+    public SearchRequestBuilder visitWhere_clause(Where_clauseContext ctx) {
         return searchRequestBuilder;
     }
 
+    @Override
+    public SearchRequestBuilder visitColumn_list_clause(Column_list_clauseContext ctx) {
+        return searchRequestBuilder.setFetchSource(ctx.getText(), null);
+    }
 
 }
