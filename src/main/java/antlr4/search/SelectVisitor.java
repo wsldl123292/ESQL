@@ -42,7 +42,8 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
 
     @Override
     public SearchRequestBuilder visitColumn_list_clause(Column_list_clauseContext ctx) {
-        return searchRequestBuilder.setFetchSource(ctx.getText(), null);
+        String[] columns = ctx.getText().split(",");
+        return searchRequestBuilder.setFetchSource(columns, null);
     }
 
     @Override
