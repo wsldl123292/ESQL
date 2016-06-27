@@ -9,7 +9,7 @@ stat
    ;
 
 select_clause
-   : SELECT column_list_clause FROM table_references where_clause? limit_case?
+   : SELECT column_list_clause FROM table_references where_clause? orderby_case? limit_case?
    ;
 
 table_name
@@ -39,4 +39,8 @@ column_list_clause
 
 table_references
    : table_name DOT table_type ( ( COMMA table_name DOT table_type ))*
+   ;
+
+orderby_case
+   : ORDER BY column_name order=(ASC|DESC)
    ;

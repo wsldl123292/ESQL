@@ -132,3 +132,12 @@ GROUP
 BY
    : 'by'|'BY'
    ;
+
+
+ASC
+   : 'asc'|'ASC'
+   ;
+
+DESC
+   : 'desc'|'DESC'
+   ;

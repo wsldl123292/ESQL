@@ -1,4 +1,4 @@
-// Generated from F:/GitHub/ESQL/src/main/java/antlr4/search\SelectParser.g4 by ANTLR 4.5.3
+// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/search/SelectParser.g4 by ANTLR 4.5.3
 package antlr4.search;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -64,6 +64,12 @@ public interface SelectParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTable_references(SelectParser.Table_referencesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SelectParser#orderby_case}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrderby_case(SelectParser.Orderby_caseContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SelectParser#where_clause}.
 	 * @param ctx the parse tree

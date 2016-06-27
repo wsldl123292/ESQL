@@ -12,6 +12,7 @@ import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 
 /**
  * 说明:
@@ -48,6 +49,8 @@ public class Esql {
             QueryBuilder queryBuilder = whereParserVisitor.visit(wtree);
 
             searchRequestBuilder.setQuery(queryBuilder);
+        }else{
+            searchRequestBuilder.setQuery(QueryBuilders.matchAllQuery());
         }
         System.out.println(searchRequestBuilder.execute().actionGet());
     }

@@ -6,6 +6,7 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.search.sort.SortOrder;
 
 import static antlr4.search.SelectParser.*;
 
@@ -42,6 +43,14 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
     @Override
     public SearchRequestBuilder visitColumn_list_clause(Column_list_clauseContext ctx) {
         return searchRequestBuilder.setFetchSource(ctx.getText(), null);
+    }
+
+    @Override
+    public SearchRequestBuilder visitOrderby_case(Orderby_caseContext ctx) {
+        if(ctx.ORDER().getSymbol().getType() == ASC){
+            return searchRequestBuilder.addSort(ctx.column_name().getText(), SortOrder.ASC);
+        }
+        return searchRequestBuilder.addSort(ctx.column_name().getText(),SortOrder.DESC);
     }
 
 }
