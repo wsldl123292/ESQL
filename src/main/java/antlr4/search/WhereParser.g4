@@ -23,18 +23,6 @@ element
    : ID | INT
    ;
 
-right_element
-   : element
-   ;
-
-left_element
-   : element
-   ;
-
-target_element
-   : element
-   ;
-
 between_op
    : BETWEEN
    ;
@@ -46,7 +34,7 @@ is_or_is_not
 
 
 simple_expression
-   : left_element relational_op=(EQ | LTH | GTH | NOT_EQ | LET | GET | LIKE) right_element               #baseExp
-   | target_element between_op LPAREN left_element COMMA left_element RPAREN                             #betweenExp
-   | target_element is_or_is_not NULL                                                                    #isExp
+   : element relational_op=(EQ | LTH | GTH | NOT_EQ | LET | GET | LIKE) (QUOTE ID QUOTE | INT)    #baseExp
+   | element between_op LPAREN INT COMMA INT RPAREN                                               #betweenExp
+   | element is_or_is_not NULL                                                                    #isExp
    ;

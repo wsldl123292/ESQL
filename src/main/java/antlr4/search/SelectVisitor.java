@@ -14,7 +14,7 @@ import static antlr4.search.SelectParser.*;
  */
 public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder> {
 
-    Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("192.168.99.100", 9300));;
+    Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("192.168.1.212", 9300));;
     private SearchRequestBuilder searchRequestBuilder;
     @Override
     public SearchRequestBuilder visitTable_name(Table_nameContext ctx) {
