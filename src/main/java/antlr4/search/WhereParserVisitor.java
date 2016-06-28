@@ -1,4 +1,4 @@
-// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/search/WhereParser.g4 by ANTLR 4.5.3
+// Generated from F:/GitHub/ESQL/src/main/java/antlr4/search\WhereParser.g4 by ANTLR 4.5.3
 package antlr4.search;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -51,12 +51,6 @@ public interface WhereParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExp(WhereParser.ExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link WhereParser#element}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitElement(WhereParser.ElementContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link WhereParser#right_element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -69,17 +63,11 @@ public interface WhereParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLeft_element(WhereParser.Left_elementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link WhereParser#target_element}.
+	 * Visit a parse tree produced by {@link WhereParser#between_element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTarget_element(WhereParser.Target_elementContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link WhereParser#between_op}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBetween_op(WhereParser.Between_opContext ctx);
+	T visitBetween_element(WhereParser.Between_elementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link WhereParser#is_or_is_not}.
 	 * @param ctx the parse tree

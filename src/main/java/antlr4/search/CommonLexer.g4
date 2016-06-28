@@ -45,10 +45,6 @@ COMMA
    : ','
    ;
 
-QUOTE
-   : '\''
-   ;
-
 DOT
    : '.'
    ;
@@ -73,4 +69,12 @@ TRUE
 
 FALSE
    : 'false' | 'FALSE'
+   ;
+
+ANY_STRING_CHAR
+   : ~' '
+   ;
+
+QUOTES
+   : '\''
    ;

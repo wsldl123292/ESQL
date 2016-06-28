@@ -27,7 +27,7 @@ public class Esql {
 
     public static void main(String[] args) throws Exception {
 
-        String sql = "select name from ttt3.ttt3 where name=67";
+        String sql = "select name,age from ttt3.ttt3 where name=67";
 
         SQLSelectQueryBlock sqlSelectQuery = getSelectBlock(sql);
 
@@ -52,6 +52,8 @@ public class Esql {
         }else{
             searchRequestBuilder.setQuery(QueryBuilders.matchAllQuery());
         }
+
+        System.out.println(searchRequestBuilder);
         System.out.println(searchRequestBuilder.execute().actionGet());
     }
 

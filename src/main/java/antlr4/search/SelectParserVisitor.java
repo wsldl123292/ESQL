@@ -1,4 +1,4 @@
-// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/search/SelectParser.g4 by ANTLR 4.5.3
+// Generated from F:/GitHub/ESQL/src/main/java/antlr4/search\SelectParser.g4 by ANTLR 4.5.3
 package antlr4.search;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -105,17 +105,23 @@ public interface SelectParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExp(SelectParser.ExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SelectParser#element}.
+	 * Visit a parse tree produced by {@link SelectParser#right_element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElement(SelectParser.ElementContext ctx);
+	T visitRight_element(SelectParser.Right_elementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SelectParser#between_op}.
+	 * Visit a parse tree produced by {@link SelectParser#left_element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBetween_op(SelectParser.Between_opContext ctx);
+	T visitLeft_element(SelectParser.Left_elementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SelectParser#between_element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBetween_element(SelectParser.Between_elementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SelectParser#is_or_is_not}.
 	 * @param ctx the parse tree

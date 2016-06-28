@@ -46,12 +46,12 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
         return searchRequestBuilder.setFetchSource(columns, null);
     }
 
-    @Override
+    /*@Override
     public SearchRequestBuilder visitOrderby_case(Orderby_caseContext ctx) {
-        if(ctx.ORDER().getSymbol().getType() == ASC){
+        if(ctx.order.getType() == ASC){
             return searchRequestBuilder.addSort(ctx.column_name().getText(), SortOrder.ASC);
         }
         return searchRequestBuilder.addSort(ctx.column_name().getText(),SortOrder.DESC);
-    }
+    }*/
 
 }
