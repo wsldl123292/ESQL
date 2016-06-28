@@ -20,9 +20,9 @@ public class WhereParser extends Parser {
 		SELECT=1, FROM=2, WHERE=3, AND=4, OR=5, IS=6, NOT=7, NULL=8, LIKE=9, IN=10, 
 		EXISTS=11, ALL=12, BETWEEN=13, REGEXP=14, LIMIT=15, COLON=16, ALL_FIELDS=17, 
 		EQ=18, LTH=19, GTH=20, NOT_EQ=21, LET=22, GET=23, SEMI=24, ORDER=25, GROUP=26, 
-		BY=27, ASC=28, DESC=29, ID=30, INT=31, NEWLINE=32, WS=33, RPAREN=34, LPAREN=35, 
-		INDEX=36, KEY=37, COMMA=38, DOT=39, PARTITION=40, NEGATION=41, VERTBAR=42, 
-		TRUE=43, FALSE=44, ANY_STRING_CHAR=45, QUOTES=46;
+		BY=27, ASC=28, DESC=29, QUOTES=30, INT=31, NEWLINE=32, WS=33, RPAREN=34, 
+		LPAREN=35, INDEX=36, KEY=37, COMMA=38, DOT=39, PARTITION=40, NEGATION=41, 
+		VERTBAR=42, TRUE=43, FALSE=44, ANY_STRING_CHAR=45, ID=46;
 	public static final int
 		RULE_stat = 0, RULE_where_clause = 1, RULE_expression = 2, RULE_right_element = 3, 
 		RULE_left_element = 4, RULE_between_element = 5, RULE_is_or_is_not = 6, 
@@ -35,17 +35,17 @@ public class WhereParser extends Parser {
 	private static final String[] _LITERAL_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, "':'", "'*'", "'='", "'<'", "'>'", "'!='", "'<='", 
-		"'>='", "';'", null, null, null, null, null, null, null, null, null, "')'", 
-		"'('", "'index'", "'key'", "','", "'.'", "'partition'", "'~'", "'|'", 
-		null, null, null, "'''"
+		"'>='", "';'", null, null, null, null, null, "'''", null, null, null, 
+		"')'", "'('", "'index'", "'key'", "','", "'.'", "'partition'", "'~'", 
+		"'|'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "SELECT", "FROM", "WHERE", "AND", "OR", "IS", "NOT", "NULL", "LIKE", 
 		"IN", "EXISTS", "ALL", "BETWEEN", "REGEXP", "LIMIT", "COLON", "ALL_FIELDS", 
 		"EQ", "LTH", "GTH", "NOT_EQ", "LET", "GET", "SEMI", "ORDER", "GROUP", 
-		"BY", "ASC", "DESC", "ID", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", 
+		"BY", "ASC", "DESC", "QUOTES", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", 
 		"INDEX", "KEY", "COMMA", "DOT", "PARTITION", "NEGATION", "VERTBAR", "TRUE", 
-		"FALSE", "ANY_STRING_CHAR", "QUOTES"
+		"FALSE", "ANY_STRING_CHAR", "ID"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -268,8 +268,8 @@ public class WhereParser extends Parser {
 				match(RPAREN);
 				}
 				break;
-			case ID:
 			case INT:
+			case ID:
 				{
 				_localctx = new ExpContext(_localctx);
 				_ctx = _localctx;
@@ -338,6 +338,11 @@ public class WhereParser extends Parser {
 	}
 
 	public static class Right_elementContext extends ParserRuleContext {
+		public List<TerminalNode> QUOTES() { return getTokens(WhereParser.QUOTES); }
+		public TerminalNode QUOTES(int i) {
+			return getToken(WhereParser.QUOTES, i);
+		}
+		public TerminalNode ID() { return getToken(WhereParser.ID, 0); }
 		public TerminalNode INT() { return getToken(WhereParser.INT, 0); }
 		public Right_elementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -354,10 +359,30 @@ public class WhereParser extends Parser {
 		Right_elementContext _localctx = new Right_elementContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_right_element);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(40);
-			match(INT);
+			setState(44);
+			switch (_input.LA(1)) {
+			case QUOTES:
+				enterOuterAlt(_localctx, 1);
+				{
+				{
+				setState(40);
+				match(QUOTES);
+				setState(41);
+				match(ID);
+				setState(42);
+				match(QUOTES);
+				}
+				}
+				break;
+			case INT:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(43);
+				match(INT);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -392,9 +417,9 @@ public class WhereParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
+			setState(46);
 			_la = _input.LA(1);
-			if ( !(_la==ID || _la==INT) ) {
+			if ( !(_la==INT || _la==ID) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -431,7 +456,7 @@ public class WhereParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(44);
+			setState(48);
 			match(INT);
 			}
 		}
@@ -464,22 +489,22 @@ public class WhereParser extends Parser {
 		Is_or_is_notContext _localctx = new Is_or_is_notContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_is_or_is_not);
 		try {
-			setState(49);
+			setState(53);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(46);
+				setState(50);
 				match(IS);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(47);
+				setState(51);
 				match(IS);
-				setState(48);
+				setState(52);
 				match(NOT);
 				}
 				break;
@@ -571,16 +596,16 @@ public class WhereParser extends Parser {
 		enterRule(_localctx, 14, RULE_simple_expression);
 		int _la;
 		try {
-			setState(67);
+			setState(71);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				_localctx = new BaseExpContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(51);
+				setState(55);
 				left_element();
-				setState(52);
+				setState(56);
 				((BaseExpContext)_localctx).relational_op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LIKE) | (1L << EQ) | (1L << LTH) | (1L << GTH) | (1L << NOT_EQ) | (1L << LET) | (1L << GET))) != 0)) ) {
@@ -588,7 +613,7 @@ public class WhereParser extends Parser {
 				} else {
 					consume();
 				}
-				setState(53);
+				setState(57);
 				right_element();
 				}
 				break;
@@ -596,19 +621,19 @@ public class WhereParser extends Parser {
 				_localctx = new BetweenExpContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(55);
-				left_element();
-				setState(56);
-				match(BETWEEN);
-				setState(57);
-				match(LPAREN);
-				setState(58);
-				between_element();
 				setState(59);
-				match(COMMA);
+				left_element();
 				setState(60);
-				between_element();
+				match(BETWEEN);
 				setState(61);
+				match(LPAREN);
+				setState(62);
+				between_element();
+				setState(63);
+				match(COMMA);
+				setState(64);
+				between_element();
+				setState(65);
 				match(RPAREN);
 				}
 				break;
@@ -616,11 +641,11 @@ public class WhereParser extends Parser {
 				_localctx = new IsExpContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(63);
+				setState(67);
 				left_element();
-				setState(64);
+				setState(68);
 				is_or_is_not();
-				setState(65);
+				setState(69);
 				match(NULL);
 				}
 				break;
@@ -655,24 +680,25 @@ public class WhereParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\60H\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\60L\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\3\3\3\3\3"+
 		"\3\4\3\4\3\4\3\4\3\4\3\4\5\4\36\n\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4&\n\4\f"+
-		"\4\16\4)\13\4\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\b\5\b\64\n\b\3\t\3\t\3"+
-		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tF\n\t\3\t\2"+
-		"\3\6\n\2\4\6\b\n\f\16\20\2\4\3\2 !\4\2\13\13\24\31E\2\22\3\2\2\2\4\24"+
-		"\3\2\2\2\6\35\3\2\2\2\b*\3\2\2\2\n,\3\2\2\2\f.\3\2\2\2\16\63\3\2\2\2\20"+
-		"E\3\2\2\2\22\23\5\4\3\2\23\3\3\2\2\2\24\25\7\5\2\2\25\26\5\6\4\2\26\5"+
-		"\3\2\2\2\27\30\b\4\1\2\30\31\7%\2\2\31\32\5\6\4\2\32\33\7$\2\2\33\36\3"+
-		"\2\2\2\34\36\5\20\t\2\35\27\3\2\2\2\35\34\3\2\2\2\36\'\3\2\2\2\37 \f\5"+
-		"\2\2 !\7\6\2\2!&\5\6\4\6\"#\f\4\2\2#$\7\7\2\2$&\5\6\4\5%\37\3\2\2\2%\""+
-		"\3\2\2\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(\7\3\2\2\2)\'\3\2\2\2*+\7!\2"+
-		"\2+\t\3\2\2\2,-\t\2\2\2-\13\3\2\2\2./\7!\2\2/\r\3\2\2\2\60\64\7\b\2\2"+
-		"\61\62\7\b\2\2\62\64\7\t\2\2\63\60\3\2\2\2\63\61\3\2\2\2\64\17\3\2\2\2"+
-		"\65\66\5\n\6\2\66\67\t\3\2\2\678\5\b\5\28F\3\2\2\29:\5\n\6\2:;\7\17\2"+
-		"\2;<\7%\2\2<=\5\f\7\2=>\7(\2\2>?\5\f\7\2?@\7$\2\2@F\3\2\2\2AB\5\n\6\2"+
-		"BC\5\16\b\2CD\7\n\2\2DF\3\2\2\2E\65\3\2\2\2E9\3\2\2\2EA\3\2\2\2F\21\3"+
-		"\2\2\2\7\35%\'\63E";
+		"\4\16\4)\13\4\3\5\3\5\3\5\3\5\5\5/\n\5\3\6\3\6\3\7\3\7\3\b\3\b\3\b\5\b"+
+		"8\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t"+
+		"\5\tJ\n\t\3\t\2\3\6\n\2\4\6\b\n\f\16\20\2\4\4\2!!\60\60\4\2\13\13\24\31"+
+		"J\2\22\3\2\2\2\4\24\3\2\2\2\6\35\3\2\2\2\b.\3\2\2\2\n\60\3\2\2\2\f\62"+
+		"\3\2\2\2\16\67\3\2\2\2\20I\3\2\2\2\22\23\5\4\3\2\23\3\3\2\2\2\24\25\7"+
+		"\5\2\2\25\26\5\6\4\2\26\5\3\2\2\2\27\30\b\4\1\2\30\31\7%\2\2\31\32\5\6"+
+		"\4\2\32\33\7$\2\2\33\36\3\2\2\2\34\36\5\20\t\2\35\27\3\2\2\2\35\34\3\2"+
+		"\2\2\36\'\3\2\2\2\37 \f\5\2\2 !\7\6\2\2!&\5\6\4\6\"#\f\4\2\2#$\7\7\2\2"+
+		"$&\5\6\4\5%\37\3\2\2\2%\"\3\2\2\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(\7\3"+
+		"\2\2\2)\'\3\2\2\2*+\7 \2\2+,\7\60\2\2,/\7 \2\2-/\7!\2\2.*\3\2\2\2.-\3"+
+		"\2\2\2/\t\3\2\2\2\60\61\t\2\2\2\61\13\3\2\2\2\62\63\7!\2\2\63\r\3\2\2"+
+		"\2\648\7\b\2\2\65\66\7\b\2\2\668\7\t\2\2\67\64\3\2\2\2\67\65\3\2\2\28"+
+		"\17\3\2\2\29:\5\n\6\2:;\t\3\2\2;<\5\b\5\2<J\3\2\2\2=>\5\n\6\2>?\7\17\2"+
+		"\2?@\7%\2\2@A\5\f\7\2AB\7(\2\2BC\5\f\7\2CD\7$\2\2DJ\3\2\2\2EF\5\n\6\2"+
+		"FG\5\16\b\2GH\7\n\2\2HJ\3\2\2\2I9\3\2\2\2I=\3\2\2\2IE\3\2\2\2J\21\3\2"+
+		"\2\2\b\35%\'.\67I";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

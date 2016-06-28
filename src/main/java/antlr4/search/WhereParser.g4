@@ -7,7 +7,6 @@ stat
    : where_clause
    ;
 
-
 where_clause
    : WHERE expression
    ;
@@ -19,9 +18,8 @@ expression
    | simple_expression              #exp
    ;
 
-
 right_element
-   : INT
+   : (QUOTES ID QUOTES) | INT
    ;
 
 left_element
@@ -35,7 +33,6 @@ between_element
 is_or_is_not
    : IS | IS NOT
    ;
-
 
 
 simple_expression

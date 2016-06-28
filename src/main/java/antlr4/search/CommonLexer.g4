@@ -1,5 +1,6 @@
 lexer grammar CommonLexer;
 
+
 ID
    : ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\u4e00' .. '\u9fa5' | '-')+
    ;
@@ -16,7 +17,7 @@ NEWLINE
 
 
 WS
-   : ( ' ' | '\t' | '\n' | '\r' )+ -> skip
+   : [' '\t\r\n]+ -> skip
    ;
 
 
@@ -73,8 +74,4 @@ FALSE
 
 ANY_STRING_CHAR
    : ~' '
-   ;
-
-QUOTES
-   : '\''
    ;

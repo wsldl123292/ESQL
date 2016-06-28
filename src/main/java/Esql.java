@@ -27,7 +27,7 @@ public class Esql {
 
     public static void main(String[] args) throws Exception {
 
-        String sql = "select name,age from ttt3.ttt3 where name=67";
+        String sql = "select name,age from ttt3.ttt3 where name='eee'";
 
         SQLSelectQueryBlock sqlSelectQuery = getSelectBlock(sql);
 

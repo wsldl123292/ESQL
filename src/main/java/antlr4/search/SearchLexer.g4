@@ -141,3 +141,8 @@ ASC
 DESC
    : 'desc'|'DESC'
    ;
+
+
+QUOTES
+   : '\''
+   ;
