@@ -27,7 +27,7 @@ public class Esql {
 
     public static void main(String[] args) throws Exception {
 
-        String sql = "select name,age from ttt3.ttt3 where name='eee'";
+        String sql = "select name,age from ttt3.ttt3 where name='eee' or name=67";
 
         SQLSelectQueryBlock sqlSelectQuery = getSelectBlock(sql);
 
@@ -35,11 +35,11 @@ public class Esql {
 
         String whereSql = getWhereSql(sqlSelectQuery);
 
-        SelectParser parser = new SelectParser(new CommonTokenStream(new SearchLexer(new ANTLRInputStream
+        /*SelectParser parser = new SelectParser(new CommonTokenStream(new SearchLexer(new ANTLRInputStream
                 (sql))));
         ParseTree tree = parser.stat();
         SelectVisitor searchSelectParserVisitor = new SelectVisitor(searchRequestBuilder);
-        searchRequestBuilder = searchSelectParserVisitor.visit(tree);
+        searchRequestBuilder = searchSelectParserVisitor.visit(tree);*/
 
         if (whereSql != null) {
             WhereParser whereParser = new WhereParser(new CommonTokenStream(new SearchLexer(new ANTLRInputStream
@@ -47,14 +47,14 @@ public class Esql {
             ParseTree wtree = whereParser.stat();
             WhereVisitor whereParserVisitor = new WhereVisitor();
             QueryBuilder queryBuilder = whereParserVisitor.visit(wtree);
-
-            searchRequestBuilder.setQuery(queryBuilder);
+            System.out.println(queryBuilder);
+            //searchRequestBuilder.setQuery(queryBuilder);
         }else{
-            searchRequestBuilder.setQuery(QueryBuilders.matchAllQuery());
+            //searchRequestBuilder.setQuery(QueryBuilders.matchAllQuery());
         }
 
-        System.out.println(searchRequestBuilder);
-        System.out.println(searchRequestBuilder.execute().actionGet());
+        //System.out.println(searchRequestBuilder);
+        //System.out.println(searchRequestBuilder.execute().actionGet());
     }
 
 

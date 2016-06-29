@@ -19,8 +19,9 @@ expression
    ;
 
 right_element
-   : (QUOTES ID QUOTES) | INT
+   : QUOTES (ID)? QUOTES | INT
    ;
+
 
 left_element
    : ID | INT
