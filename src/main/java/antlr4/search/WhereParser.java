@@ -1,4 +1,4 @@
-// Generated from F:/GitHub/ESQL/src/main/java/antlr4/search\WhereParser.g4 by ANTLR 4.5.3
+// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/search/WhereParser.g4 by ANTLR 4.5.3
 package antlr4.search;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;

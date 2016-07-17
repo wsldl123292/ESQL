@@ -21,9 +21,10 @@ import org.elasticsearch.index.query.QueryBuilders;
  */
 public class Esql {
 
-    private static final Settings settings = ImmutableSettings.settingsBuilder()
-            .put("client.transport.sniff", true).put("cluster.name", "es").build();
-    private static Client client = new TransportClient(settings).addTransportAddress(new InetSocketTransportAddress("192.168.1.212", 9300));
+//    private static final Settings settings = ImmutableSettings.settingsBuilder()
+//            .put("client.transport.sniff", true).put("cluster.name", "es").build();
+//    private static Client client = new TransportClient(settings).addTransportAddress
+//            (new InetSocketTransportAddress("192.168.1.212", 9300));
 
     public static void main(String[] args) throws Exception {
 
@@ -31,7 +32,7 @@ public class Esql {
 
         SQLSelectQueryBlock sqlSelectQuery = getSelectBlock(sql);
 
-        SearchRequestBuilder searchRequestBuilder = generateSearchRequestBuilder(sqlSelectQuery);
+        //SearchRequestBuilder searchRequestBuilder = generateSearchRequestBuilder(sqlSelectQuery);
 
         String whereSql = getWhereSql(sqlSelectQuery);
 
@@ -76,25 +77,25 @@ public class Esql {
     }
 
 
-    private static SearchRequestBuilder generateSearchRequestBuilder(SQLSelectQueryBlock sqlSelectQuery) {
-
-        SQLTableSource table = sqlSelectQuery.getFrom();
-
-        String[] tables;
-        String[] types;
-        if (table != null) {
-            String[] tableTypeArr = table.toString().split(",");
-            tables = new String[tableTypeArr.length];
-            types = new String[tableTypeArr.length];
-            for (int i = 0; i < tableTypeArr.length; i++) {
-                String[] tableType = tableTypeArr[i].split("\\.");
-                tables[i] = tableType[0];
-                types[i] = tableType[1];
-            }
-        } else {
-            return null;
-        }
-
-        return client.prepareSearch(tables).setTypes(types);
-    }
+//    private static SearchRequestBuilder generateSearchRequestBuilder(SQLSelectQueryBlock sqlSelectQuery) {
+//
+//        SQLTableSource table = sqlSelectQuery.getFrom();
+//
+//        String[] tables;
+//        String[] types;
+//        if (table != null) {
+//            String[] tableTypeArr = table.toString().split(",");
+//            tables = new String[tableTypeArr.length];
+//            types = new String[tableTypeArr.length];
+//            for (int i = 0; i < tableTypeArr.length; i++) {
+//                String[] tableType = tableTypeArr[i].split("\\.");
+//                tables[i] = tableType[0];
+//                types[i] = tableType[1];
+//            }
+//        } else {
+//            return null;
+//        }
+//
+//        return client.prepareSearch(tables).setTypes(types);
+//    }
 }
