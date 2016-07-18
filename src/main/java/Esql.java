@@ -36,15 +36,18 @@ public class Esql {
 
         String whereSql = getWhereSql(sqlSelectQuery);
 
-        /*SelectParser parser = new SelectParser(new CommonTokenStream(new SearchLexer(new ANTLRInputStream
-                (sql))));
+        SearchLexer searchLexer = new SearchLexer(new ANTLRInputStream(sql));
+        searchLexer.removeErrorListeners();
+
+        SelectParser parser = new SelectParser(new CommonTokenStream(searchLexer));
         ParseTree tree = parser.stat();
-        SelectVisitor searchSelectParserVisitor = new SelectVisitor(searchRequestBuilder);
-        searchRequestBuilder = searchSelectParserVisitor.visit(tree);*/
+//        SelectVisitor searchSelectParserVisitor = new SelectVisitor(searchRequestBuilder);
+//        searchRequestBuilder = searchSelectParserVisitor.visit(tree);
 
         if (whereSql != null) {
-            WhereParser whereParser = new WhereParser(new CommonTokenStream(new SearchLexer(new ANTLRInputStream
-                    ("where " + whereSql))));
+            searchLexer = new SearchLexer(new ANTLRInputStream("where " + whereSql));
+            searchLexer.removeErrorListeners();
+            WhereParser whereParser = new WhereParser(new CommonTokenStream(searchLexer));
             ParseTree wtree = whereParser.stat();
             WhereVisitor whereParserVisitor = new WhereVisitor();
             QueryBuilder queryBuilder = whereParserVisitor.visit(wtree);
