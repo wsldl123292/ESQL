@@ -4,34 +4,10 @@ CREATE
    : 'create' | 'CREATE'
    ;
 
-
-TABLE
-   : 'table' | 'TABLE'
-   ;
-
 NUMBER_OF_SHARDS:'number_of_shards' | 'NUMBER_OF_SHARDS';
 
-IS
-   : 'is' | 'IS'
-   ;
 
-NOT
-   : 'not' | 'NOT'
-   ;
-
-NULL
-   : 'null' | 'NULL'
-   ;
-
-
-EXISTS
-   : 'exists' | 'EXISTS'
-   ;
-
-
-ALL
-   : 'all' | 'ALL'
-   ;
+NUMBER_OF_REPLICAS:'number_of_replicas' | 'NUMBER_OF_REPLICAS';
 
 
 COLON
@@ -39,14 +15,9 @@ COLON
    ;
 
 
-ALL_FIELDS
-   : '*'
-   ;
-
 SEMI
    : ';'
    ;
-
 
 
 QUOTES
@@ -90,33 +61,10 @@ INDEX
   ;
 
 
-KEY
-  : 'key'
-  ;
-
-
 COMMA
   : ','
   ;
 
 DOT
   : '.'
-  ;
-
-PARTITION
-  : 'partition'
-  ;
-
-
-VERTBAR
-  : '|'
-  ;
-
-TRUE
-  : 'true' | 'TRUE'
-  ;
-
-
-FALSE
-  : 'false' | 'FALSE'
   ;
