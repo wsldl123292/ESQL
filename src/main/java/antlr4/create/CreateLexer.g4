@@ -64,7 +64,3 @@ INDEX
 COMMA
   : ','
   ;
-
-DOT
-  : '.'
-  ;

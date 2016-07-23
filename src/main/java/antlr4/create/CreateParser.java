@@ -18,8 +18,7 @@ public class CreateParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		CREATE=1, NUMBER_OF_SHARDS=2, NUMBER_OF_REPLICAS=3, COLON=4, SEMI=5, QUOTES=6, 
-		ID=7, INT=8, NEWLINE=9, WS=10, RPAREN=11, LPAREN=12, INDEX=13, COMMA=14, 
-		DOT=15;
+		ID=7, INT=8, NEWLINE=9, WS=10, RPAREN=11, LPAREN=12, INDEX=13, COMMA=14;
 	public static final int
 		RULE_stat = 0, RULE_create_clause = 1, RULE_index_name = 2, RULE_shards = 3, 
 		RULE_replicas = 4;
@@ -29,12 +28,11 @@ public class CreateParser extends Parser {
 
 	private static final String[] _LITERAL_NAMES = {
 		null, null, null, null, "':'", "';'", "'''", null, null, null, null, "')'", 
-		"'('", null, "','", "'.'"
+		"'('", null, "','"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "CREATE", "NUMBER_OF_SHARDS", "NUMBER_OF_REPLICAS", "COLON", "SEMI", 
-		"QUOTES", "ID", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", "INDEX", "COMMA", 
-		"DOT"
+		"QUOTES", "ID", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", "INDEX", "COMMA"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -331,7 +329,7 @@ public class CreateParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\21*\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20*\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\3\3\3\3\3\3\3\5\3\23\n\3\3\3\5\3"+
 		"\26\n\3\3\4\7\4\31\n\4\f\4\16\4\34\13\4\3\4\7\4\37\n\4\f\4\16\4\"\13\4"+
 		"\3\5\3\5\3\5\3\6\3\6\3\6\3\6\2\2\7\2\4\6\b\n\2\2(\2\f\3\2\2\2\4\16\3\2"+
