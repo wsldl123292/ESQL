@@ -16,7 +16,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        String sql = "select name,age from ttt3.ttt3 where name='test' and name = 3";
+        String sql = "create index a number_of_shards 1 number_of_replicas 1";
 
         LibExprLexer libExprLexer = new LibExprLexer(new ANTLRInputStream
                 (sql));
@@ -24,9 +24,6 @@ public class Test {
         LibExprParser parser = new LibExprParser(new
                 CommonTokenStream(libExprLexer));
         ParseTree tree = parser.stat();
-
-        LibVIsitor libVIsitor = new LibVIsitor();
-        libVIsitor.visit(tree);
         System.out.println(tree.toStringTree(parser));
     }
 }

@@ -18,7 +18,7 @@ public class CreateParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		CREATE=1, NUMBER_OF_SHARDS=2, NUMBER_OF_REPLICAS=3, COLON=4, SEMI=5, QUOTES=6, 
-		ID=7, INT=8, NEWLINE=9, WS=10, RPAREN=11, LPAREN=12, INDEX=13, COMMA=14;
+		ID=7, INT=8, NEWLINE=9, WS=10, RPAREN=11, LPAREN=12, INDEX=13, TABLE=14;
 	public static final int
 		RULE_stat = 0, RULE_create_clause = 1, RULE_index_name = 2, RULE_shards = 3, 
 		RULE_replicas = 4;
@@ -28,11 +28,11 @@ public class CreateParser extends Parser {
 
 	private static final String[] _LITERAL_NAMES = {
 		null, null, null, null, "':'", "';'", "'''", null, null, null, null, "')'", 
-		"'('", null, "','"
+		"'('", null, "'table'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "CREATE", "NUMBER_OF_SHARDS", "NUMBER_OF_REPLICAS", "COLON", "SEMI", 
-		"QUOTES", "ID", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", "INDEX", "COMMA"
+		"QUOTES", "ID", "INT", "NEWLINE", "WS", "RPAREN", "LPAREN", "INDEX", "TABLE"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -121,7 +121,6 @@ public class CreateParser extends Parser {
 
 	public static class Create_clauseContext extends ParserRuleContext {
 		public TerminalNode CREATE() { return getToken(CreateParser.CREATE, 0); }
-		public TerminalNode INDEX() { return getToken(CreateParser.INDEX, 0); }
 		public Index_nameContext index_name() {
 			return getRuleContext(Index_nameContext.class,0);
 		}
@@ -152,23 +151,21 @@ public class CreateParser extends Parser {
 			setState(12);
 			match(CREATE);
 			setState(13);
-			match(INDEX);
-			setState(14);
 			index_name();
-			setState(16);
+			setState(15);
 			_la = _input.LA(1);
 			if (_la==NUMBER_OF_SHARDS) {
 				{
-				setState(15);
+				setState(14);
 				shards();
 				}
 			}
 
-			setState(19);
+			setState(18);
 			_la = _input.LA(1);
 			if (_la==NUMBER_OF_REPLICAS) {
 				{
-				setState(18);
+				setState(17);
 				replicas();
 				}
 			}
@@ -213,31 +210,31 @@ public class CreateParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
+			setState(23);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ID) {
 				{
 				{
-				setState(21);
+				setState(20);
 				match(ID);
 				}
 				}
-				setState(26);
+				setState(25);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(30);
+			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==INT) {
 				{
 				{
-				setState(27);
+				setState(26);
 				match(INT);
 				}
 				}
-				setState(32);
+				setState(31);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -274,9 +271,9 @@ public class CreateParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33);
+			setState(32);
 			match(NUMBER_OF_SHARDS);
-			setState(34);
+			setState(33);
 			match(INT);
 			}
 		}
@@ -311,9 +308,9 @@ public class CreateParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36);
+			setState(35);
 			match(NUMBER_OF_REPLICAS);
-			setState(37);
+			setState(36);
 			match(INT);
 			}
 		}
@@ -329,17 +326,17 @@ public class CreateParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20*\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\3\3\3\3\3\3\3\5\3\23\n\3\3\3\5\3"+
-		"\26\n\3\3\4\7\4\31\n\4\f\4\16\4\34\13\4\3\4\7\4\37\n\4\f\4\16\4\"\13\4"+
-		"\3\5\3\5\3\5\3\6\3\6\3\6\3\6\2\2\7\2\4\6\b\n\2\2(\2\f\3\2\2\2\4\16\3\2"+
-		"\2\2\6\32\3\2\2\2\b#\3\2\2\2\n&\3\2\2\2\f\r\5\4\3\2\r\3\3\2\2\2\16\17"+
-		"\7\3\2\2\17\20\7\17\2\2\20\22\5\6\4\2\21\23\5\b\5\2\22\21\3\2\2\2\22\23"+
-		"\3\2\2\2\23\25\3\2\2\2\24\26\5\n\6\2\25\24\3\2\2\2\25\26\3\2\2\2\26\5"+
-		"\3\2\2\2\27\31\7\t\2\2\30\27\3\2\2\2\31\34\3\2\2\2\32\30\3\2\2\2\32\33"+
-		"\3\2\2\2\33 \3\2\2\2\34\32\3\2\2\2\35\37\7\n\2\2\36\35\3\2\2\2\37\"\3"+
-		"\2\2\2 \36\3\2\2\2 !\3\2\2\2!\7\3\2\2\2\" \3\2\2\2#$\7\4\2\2$%\7\n\2\2"+
-		"%\t\3\2\2\2&\'\7\5\2\2\'(\7\n\2\2(\13\3\2\2\2\6\22\25\32 ";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\20)\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\3\3\3\3\3\5\3\22\n\3\3\3\5\3\25\n"+
+		"\3\3\4\7\4\30\n\4\f\4\16\4\33\13\4\3\4\7\4\36\n\4\f\4\16\4!\13\4\3\5\3"+
+		"\5\3\5\3\6\3\6\3\6\3\6\2\2\7\2\4\6\b\n\2\2\'\2\f\3\2\2\2\4\16\3\2\2\2"+
+		"\6\31\3\2\2\2\b\"\3\2\2\2\n%\3\2\2\2\f\r\5\4\3\2\r\3\3\2\2\2\16\17\7\3"+
+		"\2\2\17\21\5\6\4\2\20\22\5\b\5\2\21\20\3\2\2\2\21\22\3\2\2\2\22\24\3\2"+
+		"\2\2\23\25\5\n\6\2\24\23\3\2\2\2\24\25\3\2\2\2\25\5\3\2\2\2\26\30\7\t"+
+		"\2\2\27\26\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\37\3\2"+
+		"\2\2\33\31\3\2\2\2\34\36\7\n\2\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2"+
+		"\2\37 \3\2\2\2 \7\3\2\2\2!\37\3\2\2\2\"#\7\4\2\2#$\7\n\2\2$\t\3\2\2\2"+
+		"%&\7\5\2\2&\'\7\n\2\2\'\13\3\2\2\2\6\21\24\31\37";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

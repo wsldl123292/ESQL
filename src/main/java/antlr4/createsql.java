@@ -18,7 +18,7 @@ public class createsql {
 //    private static Client client = new TransportClient(settings).addTransportAddress
 //            (new InetSocketTransportAddress("192.168.1.212", 9300));
     public static void main(String[] args) {
-        String sql = "create index a number_of_shards 1 number_of_replicas 1";
+        String sql = "create table A number_of_shards 1 number_of_replicas 1";
         //client.admin().indices().prepareCreate().setSettings().execute().actionGet();
         CreateLexer createLexer = new CreateLexer(new ANTLRInputStream(sql));
         createLexer.removeErrorListeners();

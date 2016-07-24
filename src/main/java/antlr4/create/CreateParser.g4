@@ -7,7 +7,7 @@ stat
    ;
 
 create_clause
-   : CREATE INDEX index_name shards? replicas?
+   : CREATE index_name shards? replicas?
    ;
 
 index_name

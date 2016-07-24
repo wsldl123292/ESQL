@@ -60,7 +60,4 @@ INDEX
   : 'index' | 'INDEX'
   ;
 
-
-COMMA
-  : ','
-  ;
+TABLE:'table';
