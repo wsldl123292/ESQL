@@ -1,4 +1,4 @@
-// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/create/CreateParser.g4 by ANTLR 4.5.3
+// Generated from F:/GitHub/ESQL/src/main/java/antlr4/create\CreateParser.g4 by ANTLR 4.5.3
 package antlr4.create;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -25,6 +25,13 @@ public class CreateParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitCreate_clause(CreateParser.Create_clauseContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitIndex_clause(CreateParser.Index_clauseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

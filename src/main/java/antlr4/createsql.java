@@ -2,6 +2,7 @@ package antlr4;
 
 import antlr4.create.CreateLexer;
 import antlr4.create.CreateParser;
+import antlr4.create.CreateVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -18,13 +19,15 @@ public class createsql {
 //    private static Client client = new TransportClient(settings).addTransportAddress
 //            (new InetSocketTransportAddress("192.168.1.212", 9300));
     public static void main(String[] args) {
-        String sql = "create table A number_of_shards 1 number_of_replicas 1";
+        String sql = "create index A number_of_shards 1 number_of_replicas 1";
         //client.admin().indices().prepareCreate().setSettings().execute().actionGet();
         CreateLexer createLexer = new CreateLexer(new ANTLRInputStream(sql));
         createLexer.removeErrorListeners();
 
         CreateParser parser = new CreateParser(new CommonTokenStream(createLexer));
         ParseTree tree = parser.stat();
-        System.out.println(tree.toStringTree(parser));
+
+        CreateVisitor visitor = new CreateVisitor();
+        visitor.visit(tree);
     }
 }

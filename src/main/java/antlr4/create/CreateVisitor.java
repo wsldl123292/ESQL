@@ -9,11 +9,6 @@ import static antlr4.create.CreateParser.*;
  */
 public class CreateVisitor extends CreateParserBaseVisitor<CreateIndexRequestBuilder> {
     @Override
-    public CreateIndexRequestBuilder visitIndex_name(Index_nameContext ctx) {
-        System.out.println(ctx.getText());
-        return visitChildren(ctx);
-    }
-    @Override
     public CreateIndexRequestBuilder visitShards(ShardsContext ctx) {
         System.out.println(ctx.getText());
         return visitChildren(ctx);

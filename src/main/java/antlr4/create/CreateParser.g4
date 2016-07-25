@@ -7,8 +7,10 @@ stat
    ;
 
 create_clause
-   : CREATE index_name shards? replicas?
+   : CREATE index_clause shards? replicas?
    ;
+
+index_clause: INDEX index_name;
 
 index_name
    : (ID)*(INT)*

@@ -1,4 +1,4 @@
-// Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/create/CreateParser.g4 by ANTLR 4.5.3
+// Generated from F:/GitHub/ESQL/src/main/java/antlr4/create\CreateParser.g4 by ANTLR 4.5.3
 package antlr4.create;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -22,6 +22,12 @@ public interface CreateParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCreate_clause(CreateParser.Create_clauseContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CreateParser#index_clause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIndex_clause(CreateParser.Index_clauseContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CreateParser#index_name}.
 	 * @param ctx the parse tree

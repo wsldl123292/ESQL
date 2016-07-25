@@ -4,6 +4,10 @@ CREATE
    : 'create' | 'CREATE'
    ;
 
+INDEX
+  : 'index' | 'INDEX'
+  ;
+
 NUMBER_OF_SHARDS:'number_of_shards' | 'NUMBER_OF_SHARDS';
 
 
@@ -43,21 +47,3 @@ NEWLINE
 WS
   : [\t\r\n]+ -> skip
   ;
-
-
-
-RPAREN
-  : ')'
-  ;
-
-
-LPAREN
-  : '('
-  ;
-
-
-INDEX
-  : 'index' | 'INDEX'
-  ;
-
-TABLE:'table';
