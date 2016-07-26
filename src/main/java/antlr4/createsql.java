@@ -37,6 +37,8 @@ public class createsql {
         createLexer.removeErrorListeners();
 
         CreateParser parser = new CreateParser(new CommonTokenStream(createLexer));
+        parser.removeErrorListeners();
+
         ParseTree tree = parser.stat();
 
         IndicesAdminClient indicesAdminClient = client.admin().indices();
