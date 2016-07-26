@@ -1,25 +1,18 @@
-parser grammar CreateParser;
+parser grammar MappingParser;
 
 options
-   { tokenVocab = CreateLexer; }
-stat
-   : create_clause
+   { tokenVocab = MappingLexer; }
+
+mapping_clause
+   : ADD index_clause type_clause RPAREN source_clause? LPAREN
    ;
 
-create_clause
-   : CREATE index_clause shards? replicas?
-   ;
+index_clause: MAPPING index_name;
 
-index_clause: INDEX index_name;
+type_clause: TYPE index_name;
 
 index_name
    : (ID)*(INT)*
    ;
 
-shards
-   : NUMBER_OF_SHARDS INT
-   ;
-
-replicas
-   : NUMBER_OF_REPLICAS INT
-   ;
+source_clause: SOURCE COLON RPAREN ENABLED (TRUE|FALSE) LPAREN;

@@ -1,17 +1,38 @@
-lexer grammar CreateLexer;
+lexer grammar MappingLexer;
 
-CREATE
-   : 'create' | 'CREATE'
+ADD
+   : 'add' | 'ADD'
    ;
 
-INDEX
-  : 'index' | 'INDEX'
+MAPPING
+  : 'mapping' | 'MAPPING'
   ;
 
-NUMBER_OF_SHARDS:'number_of_shards' | 'NUMBER_OF_SHARDS';
+TYPE:'type' | 'TYPE';
 
 
-NUMBER_OF_REPLICAS:'number_of_replicas' | 'NUMBER_OF_REPLICAS';
+SOURCE:'_source'|'_SOURCE';
+
+INDEX:'index'|'INDEX';
+
+STORE:'store'|'STORE';
+
+ENABLED:'enabled'|'ENABLED';
+
+COLON: ':';
+
+RPAREN: '{';
+
+
+LPAREN: '}';
+
+COMMA: ',';
+
+TRUE: 'true' | 'TRUE';
+
+FALSE: 'false' | 'FALSE';
+
+
 
 ID
   : ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\u4e00' .. '\u9fa5' | '-')+
