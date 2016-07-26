@@ -1,18 +1,14 @@
 import antlr4.search.*;
 import com.alibaba.druid.sql.ast.statement.*;
 import com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser;
-import com.sun.org.apache.xml.internal.utils.StringBufferPool;
+import com.elasticsearch.search.SearchLexer;
+import com.elasticsearch.search.SelectParser;
+import com.elasticsearch.search.WhereParser;
+import com.elasticsearch.search.WhereVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.ImmutableSettings;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
 
 /**
  * 说明:

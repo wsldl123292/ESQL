@@ -1,8 +1,5 @@
 package test;
 
-import antlr4.search.SearchLexer;
-import antlr4.search.SelectParser;
-import antlr4.search.SelectVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;

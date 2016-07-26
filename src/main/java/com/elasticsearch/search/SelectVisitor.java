@@ -1,14 +1,6 @@
-package antlr4.search;
+package com.elasticsearch.search;
 
 import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.ImmutableSettings;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.search.sort.SortOrder;
-
-import static antlr4.search.SelectParser.*;
 
 /**
  * 说明:
@@ -24,24 +16,24 @@ public class SelectVisitor extends SelectParserBaseVisitor<SearchRequestBuilder>
     }
 
     @Override
-    public SearchRequestBuilder visitTable_type(Table_typeContext ctx) {
+    public SearchRequestBuilder visitTable_type(SelectParser.Table_typeContext ctx) {
         return searchRequestBuilder;
     }
 
     @Override
-    public SearchRequestBuilder visitLimit_expr(Limit_exprContext ctx) {
+    public SearchRequestBuilder visitLimit_expr(SelectParser.Limit_exprContext ctx) {
         int begin = Integer.parseInt(ctx.getText().split(",")[0]);
         int size = Integer.parseInt(ctx.getText().split(",")[1]);
         return searchRequestBuilder.setFrom(begin).setSize(size);
     }
 
     @Override
-    public SearchRequestBuilder visitWhere_clause(Where_clauseContext ctx) {
+    public SearchRequestBuilder visitWhere_clause(SelectParser.Where_clauseContext ctx) {
         return searchRequestBuilder;
     }
 
     @Override
-    public SearchRequestBuilder visitColumn_list_clause(Column_list_clauseContext ctx) {
+    public SearchRequestBuilder visitColumn_list_clause(SelectParser.Column_list_clauseContext ctx) {
         String[] columns = ctx.getText().split(",");
         return searchRequestBuilder.setFetchSource(columns, null);
     }

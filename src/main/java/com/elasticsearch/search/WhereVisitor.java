@@ -1,9 +1,7 @@
-package antlr4.search;
+package com.elasticsearch.search;
 
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-
-import static antlr4.search.WhereParser.*;
 
 /**
  * 说明: sql语句中的where条件转换为QueryBuilder,
@@ -20,7 +18,7 @@ public class WhereVisitor extends WhereParserBaseVisitor<QueryBuilder> {
      * @return QueryBuilder
      */
     @Override
-    public QueryBuilder visitParenExp(ParenExpContext ctx) {
+    public QueryBuilder visitParenExp(WhereParser.ParenExpContext ctx) {
         return visit(ctx.expression());
     }
 
@@ -31,7 +29,7 @@ public class WhereVisitor extends WhereParserBaseVisitor<QueryBuilder> {
      * @return QueryBuilder
      */
     @Override
-    public QueryBuilder visitAndExp(AndExpContext ctx) {
+    public QueryBuilder visitAndExp(WhereParser.AndExpContext ctx) {
         QueryBuilder left = visit(ctx.expression(0));
         QueryBuilder right = visit(ctx.expression(1));
         return QueryBuilders.boolQuery()
@@ -47,7 +45,7 @@ public class WhereVisitor extends WhereParserBaseVisitor<QueryBuilder> {
      * @return QueryBuilder
      */
     @Override
-    public QueryBuilder visitOrExp(OrExpContext ctx) {
+    public QueryBuilder visitOrExp(WhereParser.OrExpContext ctx) {
         QueryBuilder left = visit(ctx.expression(0));
         QueryBuilder right = visit(ctx.expression(1));
         return QueryBuilders.boolQuery()
@@ -63,12 +61,12 @@ public class WhereVisitor extends WhereParserBaseVisitor<QueryBuilder> {
      * @return QueryBuilder
      */
     @Override
-    public QueryBuilder visitExp(ExpContext ctx) {
-        Simple_expressionContext simple_expressionContext = ctx.simple_expression();
-        if (simple_expressionContext instanceof BaseExpContext) {
-            BaseExpContext baseExpContext = (BaseExpContext) simple_expressionContext;
+    public QueryBuilder visitExp(WhereParser.ExpContext ctx) {
+        WhereParser.Simple_expressionContext simple_expressionContext = ctx.simple_expression();
+        if (simple_expressionContext instanceof WhereParser.BaseExpContext) {
+            WhereParser.BaseExpContext baseExpContext = (WhereParser.BaseExpContext) simple_expressionContext;
             switch (baseExpContext.relational_op.getType()) {
-                case EQ:
+                case WhereParser.EQ:
                     return QueryBuilders.matchPhraseQuery(baseExpContext.left_element().getText(),
                             baseExpContext.right_element().getText());
                 default:

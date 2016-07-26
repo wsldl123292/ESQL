@@ -1,22 +1,16 @@
-package antlr4;
-
-import antlr4.create.CreateLexer;
-import antlr4.create.CreateParser;
-import antlr4.create.CreateVisitor;
-import com.sun.org.apache.bcel.internal.generic.IFNE;
+import com.elasticsearch.create.CreateLexer;
+import com.elasticsearch.create.CreateParser;
+import com.elasticsearch.create.CreateVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.client.FilterClient;
 import org.elasticsearch.client.IndicesAdminClient;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
-
-import java.util.HashMap;
 
 /**
  * 功能:

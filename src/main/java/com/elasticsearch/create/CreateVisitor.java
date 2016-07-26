@@ -1,12 +1,9 @@
-package antlr4.create;
+package com.elasticsearch.create;
 
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.client.IndicesAdminClient;
-import org.elasticsearch.common.settings.Settings;
 
 import java.util.HashMap;
-
-import static antlr4.create.CreateParser.*;
 
 /**
  * 功能: create语句
@@ -25,19 +22,19 @@ public class CreateVisitor extends CreateParserBaseVisitor<CreateIndexRequestBui
 
 
     @Override
-    public CreateIndexRequestBuilder visitShards(ShardsContext ctx) {
+    public CreateIndexRequestBuilder visitShards(CreateParser.ShardsContext ctx) {
         settings.put(ctx.getChild(0).getText(), ctx.getChild(1).getText());
         return createIndexRequestBuilder;
     }
 
     @Override
-    public CreateIndexRequestBuilder visitReplicas(ReplicasContext ctx) {
+    public CreateIndexRequestBuilder visitReplicas(CreateParser.ReplicasContext ctx) {
         settings.put(ctx.getChild(0).getText(), ctx.getChild(1).getText());
         return createIndexRequestBuilder;
     }
 
     @Override
-    public CreateIndexRequestBuilder visitIndex_name(Index_nameContext ctx) {
+    public CreateIndexRequestBuilder visitIndex_name(CreateParser.Index_nameContext ctx) {
         createIndexRequestBuilder = indicesAdminClient.prepareCreate(ctx.getText());
         return createIndexRequestBuilder;
     }

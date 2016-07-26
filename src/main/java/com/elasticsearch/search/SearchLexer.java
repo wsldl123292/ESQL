@@ -1,5 +1,5 @@
 // Generated from /Users/ldl/Documents/develop/project/github/ESQL/src/main/java/antlr4/search/SearchLexer.g4 by ANTLR 4.5.3
-package antlr4.search;
+package com.elasticsearch.search;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

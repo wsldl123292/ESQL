@@ -1,4 +1,4 @@
-package antlr4.search;
+package com.elasticsearch.search;
 
 import com.alibaba.druid.sql.SQLUtils;
 import com.alibaba.druid.sql.ast.SQLStatement;
