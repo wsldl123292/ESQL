@@ -2,10 +2,14 @@ package antlr4.create;
 
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.client.IndicesAdminClient;
+import org.elasticsearch.common.settings.Settings;
+
+import java.util.HashMap;
 
 import static antlr4.create.CreateParser.*;
+
 /**
- * 功能:
+ * 功能: create语句
  * 作者: ldl
  * 时间: 2016-07-21 22:33
  */
@@ -13,18 +17,23 @@ public class CreateVisitor extends CreateParserBaseVisitor<CreateIndexRequestBui
 
     private CreateIndexRequestBuilder createIndexRequestBuilder;
     private IndicesAdminClient indicesAdminClient;
+    private HashMap<String, Object> settings = new HashMap<>();
 
-    public CreateVisitor(IndicesAdminClient indicesAdminClient){
+    public CreateVisitor(IndicesAdminClient indicesAdminClient) {
         this.indicesAdminClient = indicesAdminClient;
     }
 
+
     @Override
     public CreateIndexRequestBuilder visitShards(ShardsContext ctx) {
-        return createIndexRequestBuilder.setSettings("number_of_shards 1");
+        settings.put(ctx.getChild(0).getText(), ctx.getChild(1).getText());
+        return createIndexRequestBuilder;
     }
+
     @Override
     public CreateIndexRequestBuilder visitReplicas(ReplicasContext ctx) {
-        return createIndexRequestBuilder.setSettings("number_of_replicas 1");
+        settings.put(ctx.getChild(0).getText(), ctx.getChild(1).getText());
+        return createIndexRequestBuilder;
     }
 
     @Override
@@ -32,4 +41,9 @@ public class CreateVisitor extends CreateParserBaseVisitor<CreateIndexRequestBui
         createIndexRequestBuilder = indicesAdminClient.prepareCreate(ctx.getText());
         return createIndexRequestBuilder;
     }
+
+    public HashMap<String, Object> getSettings() {
+        return settings;
+    }
+
 }
